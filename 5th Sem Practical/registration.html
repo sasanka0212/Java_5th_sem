@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Register</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Registration Form</h1>
+    <form name="RegForm" onsubmit="return Check()" method="post">
+    <p>Your Name : <input type="text" size="80" name="Name"></p><br>
+    <p>Registration No : <input type="number" size="80" name="Reg"></p><br>
+    <p>Roll : <input type="number" size="80" name="Roll"> Number : <input type="number" size="80" name="Number"></p><br>
+    <p>Email-Address : <input type="text" size="80" name="Email"></p><br>
+    <p>Phone No : <input type="number" size="80" name="Phone"></p><br>
+    <p>
+        Select Your Honours Course :
+        <select type="text" value="" name="Course">
+            <option>Computer Science</option>
+            <option>Mathematics</option>
+            <option>Statistics</option>
+            <option>Physics</option>
+            <option>Chemistry</option>
+            <option>Biotechnology</option>
+            <option>Geography</option>
+            <option>Sociology</option>
+            <option>Microbiology</option>
+        </select>
+    </p><br>
+    <p>
+        Select Semester :
+        <select type="text" value="" name="Sem">
+            <option>5th Semester</option>
+            <option>3rd Semester</option>
+            <option>1st Semester</option>
+        </select>
+    </p><br>
+    <p>
+        <input type="submit" value="send" name="Submit">
+        <input type="reset" value="Reset" name="Reset">
+    </p>
+    </form>
+    <script>
+			function Check() {
+				var name =
+					document.forms.RegForm.Name.value;
+				var email =
+					document.forms.RegForm.Email.value;
+				var phone =
+					document.forms.RegForm.Phone.value;
+				var hons =
+					document.forms.RegForm.Course.value;
+				var reg =
+					document.forms.RegForm.Reg.value;
+                var roll = 
+                    document.forms.Regform.Roll.value;
+                var no =
+                    document.forms.RegForm.Number.value;
+				var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; //Javascript reGex for Email Validation.
+				var regPhone=/^\d{10}$/;									 // Javascript reGex for Phone Number validation.
+				var regName = /\d+$/g;	
+                var regReg = /^\d{6}$/;	
+                var regRoll = /^\d{7}$/;
+                var regNum = /^\d{7}$/;						 // Javascript reGex for Name validation
+
+				if (name == "" || regName.test(name)) {
+					window.alert("Please enter your name properly.");
+					name.focus();
+					return false;
+				}
+				
+				if (email == "" || !regEmail.test(email)) {
+					window.alert("Please enter a valid e-mail address.");
+					email.focus();
+					return false;
+				}
+                
+                if (phone == "" || !regPhone.test(phone)) {
+					alert("Please enter valid phone number.");
+					phone.focus();
+					return false;
+				}
+
+				if (hons.selectedIndex == -1) {
+					alert("Please enter your course.");
+					hons.focus();
+					return false;
+				}
+
+                if (reg == "" || !regReg.test(reg)) {
+					alert("Please enter valid registration number.");
+					reg.focus();
+					return false;
+				}
+                
+                if (roll == "" || !regRoll.test(roll)) {
+					alert("Please enter valid roll");
+					roll.focus();
+					return false;
+				}
+
+                if (no == "" || !regNum.test(no)) {
+					alert("Please enter valid Number.");
+					no.focus();
+					return false;
+				}
+				return true;
+			}
+		</script>
+</body>
+</html>
